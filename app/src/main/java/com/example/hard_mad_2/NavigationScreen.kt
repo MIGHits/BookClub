@@ -1,17 +1,17 @@
 package com.example.hard_mad_2
 
-import androidx.activity.SystemBarStyle
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.hard_mad_2.screen.SignInScreen
+import com.example.hard_mad_2.screen.LibraryScreenContent
+import com.example.hard_mad_2.screen.SignInScreenContent
+import com.example.hard_mad_2.screen.routes.LibraryScreen
+import com.example.hard_mad_2.screen.routes.SignInScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -35,11 +35,14 @@ fun NavigationScreen(
 
     NavHost(
         navController = navController,
-        startDestination = SignInScreen.toString(),
+        startDestination = LibraryScreen.toString(),
         modifier = modifier
     ) {
         composable(SignInScreen.toString()) {
-            SignInScreen()
+            SignInScreenContent()
+        }
+        composable(LibraryScreen.toString()) {
+            LibraryScreenContent()
         }
     }
 

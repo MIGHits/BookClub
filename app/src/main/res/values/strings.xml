@@ -5,4 +5,7 @@
     <string name="email">Электронная почта</string>
     <string name="password">Пароль</string>
     <string name="entrance">Войти</string>
+    <string name="library_header">БИБЛИОТЕКА</string>
+    <string name="latest_books">НОВИНКИ</string>
+    <string name="popular_books">ПОПУЛЯРНЫЕ КНИГИ</string>
 </resources>
