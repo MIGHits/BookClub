@@ -2,10 +2,8 @@ package com.example.hard_mad_2.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,17 +14,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
 import com.example.hard_mad_2.R
+import com.example.hard_mad_2.components.library_screen.BookCollectionItem
 import com.example.hard_mad_2.components.library_screen.LatestCarousel
 import com.example.hard_mad_2.data_stub.Data
-import com.example.hard_mad_2.models.GridItem
-import com.example.hard_mad_2.ui.theme.Alumni
 
 
 @Composable
@@ -34,7 +27,7 @@ fun LibraryScreenContent() {
     LazyVerticalGrid(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 24.dp)
+            .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 0.dp)
             .background(color = MaterialTheme.colorScheme.background),
         columns = GridCells.Fixed(3),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -70,34 +63,10 @@ fun LibraryScreenContent() {
         items(Data.gridList) { item ->
             BookCollectionItem(item)
         }
+        item(span = { GridItemSpan(maxLineSpan) }) {
+            Spacer(Modifier.height(100.dp))
+        }
     }
 }
 
 
-@Composable
-fun BookCollectionItem(book: GridItem) {
-    Column {
-        AsyncImage(
-            model = book.img,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Spacer(Modifier.height(8.dp))
-        Text(
-            modifier = Modifier.fillMaxWidth(),
-            text = book.name,
-            fontFamily = Alumni,
-            fontWeight = FontWeight.Bold,
-            lineHeight = 14.sp,
-            fontSize = 14.sp,
-            color = MaterialTheme.colorScheme.primary
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            modifier = Modifier.fillMaxWidth(),
-            text = book.author,
-            style = MaterialTheme.typography.displaySmall,
-            color = MaterialTheme.colorScheme.primary
-        )
-    }
-}

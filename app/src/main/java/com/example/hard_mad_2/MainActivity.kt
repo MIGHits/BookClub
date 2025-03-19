@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.hard_mad_2.screen.NavigationScreen
 import com.example.hard_mad_2.ui.theme.HARD_MAD_2Theme
 
 class MainActivity : ComponentActivity() {
