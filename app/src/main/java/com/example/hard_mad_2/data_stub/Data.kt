@@ -2,6 +2,8 @@ package com.example.hard_mad_2.data_stub
 
 import com.example.hard_mad_2.models.CarouselItem
 import com.example.hard_mad_2.models.GridItem
+import com.example.hard_mad_2.models.SearchItem
+import com.example.hard_mad_2.screen.SearchElement
 import java.util.Locale
 
 object Data {
@@ -98,6 +100,38 @@ object Data {
                 Locale.ROOT
             ),
             "Эрик Мария Ремарк"
+        )
+    )
+    val searchItems = listOf(
+        SearchItem(
+            img = "https://imo10.labirint.ru/books/626058/cover.jpg/484-0",
+            name = "SWift для детей",
+            authors = listOf("Мэтт Маккарти", "Глория Уинквист")
+        ),
+        SearchItem(
+            img = "https://s3-alpha-sig.figma.com/img/7ede/77d4/132cdb792fea35ca627c2fee4ab18cf7?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FHRLAistDthj8wZmTN7e6HQJrRoBnZ3Ttc5llplTM5s~8W0~uOwXx8Bgjp6t0VSjzuj5~2FDH4IKBp-ftb4eo0ZzAT1C478~P-OfNG9KJL5fWvgRi49xiJmY-aG4LcDyfxap-9ADuFCgESHSEMqsVYUUULpgKZJk6g0rkbialwR5hwYH42EOEwUD0S~20Z~0IvCGhxxrhnTmNx-fpDZaPXXJn1sWVdrgJVPHSJTf4RL4zLZHJ~ZZjmz9COiBflMvx4F9ZcePsLdxt3h9kkpmbb-sSr6QWsUf8JsXhPoEQjyIVD4UC-tCHMb8sH3NQ1gFo6v7lHW9MlyX3ILVb9T4aA__",
+            name = "Чистый код: создание, анализ и рефакторинг",
+            authors = listOf("Роберт Мартин")
+        ),
+        SearchItem(
+            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
+            name = "Kotlin в действии",
+            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
+        ),
+        SearchItem(
+            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
+            name = "Kotlin в действии",
+            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
+        ),
+        SearchItem(
+            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
+            name = "Kotlin в действии",
+            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
+        ),
+        SearchItem(
+            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
+            name = "Kotlin в действии",
+            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
         )
     )
 }

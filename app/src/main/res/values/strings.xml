@@ -8,4 +8,5 @@
     <string name="library_header">БИБЛИОТЕКА</string>
     <string name="latest_books">НОВИНКИ</string>
     <string name="popular_books">ПОПУЛЯРНЫЕ КНИГИ</string>
+    <string name="book_search">Поиск по книгам</string>
 </resources>

@@ -3,12 +3,14 @@ package com.example.hard_mad_2.screen
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -31,6 +33,7 @@ import androidx.navigation.compose.composable
 import com.example.hard_mad_2.R
 import com.example.hard_mad_2.components.BottomNavigationBar
 import com.example.hard_mad_2.screen.routes.LibraryScreen
+import com.example.hard_mad_2.screen.routes.SearchScreen
 import com.example.hard_mad_2.screen.routes.SignInScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -59,7 +62,7 @@ fun NavigationScreen(
 
         NavHost(
             navController = navController,
-            startDestination = LibraryScreen.toString(),
+            startDestination = SearchScreen.toString(),
             modifier = modifier.fillMaxSize()
         ) {
             composable(SignInScreen.toString()) {
@@ -69,13 +72,18 @@ fun NavigationScreen(
                 bottomBarVisible = true
                 LibraryScreenContent()
             }
+            composable(SearchScreen.toString()) {
+                bottomBarVisible = true
+                SearchScreenContent()
+            }
         }
         if (bottomBarVisible) {
             Card(
                 modifier = Modifier
-                    .graphicsLayer(clip = false)
-                    .align(Alignment.BottomCenter)
-                    .padding(start = 16.dp, end = 16.dp, bottom = 40.dp),
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp, bottom = 40.dp)
+                    .align(Alignment.BottomCenter),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
                 shape = RoundedCornerShape(50)
             ) {
                 BottomNavigationBar(

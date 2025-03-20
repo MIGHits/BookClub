@@ -32,6 +32,7 @@ fun BookCollectionItem(book: GridItem) {
             fontWeight = FontWeight.Bold,
             lineHeight = 14.sp,
             fontSize = 14.sp,
+            letterSpacing = 0.sp,
             color = MaterialTheme.colorScheme.primary
         )
         Spacer(Modifier.height(4.dp))
