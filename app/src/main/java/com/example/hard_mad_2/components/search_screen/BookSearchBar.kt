@@ -34,6 +34,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.hard_mad_2.R
 import com.example.hard_mad_2.data_stub.Data
+import com.example.hard_mad_2.state.ReadingState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -147,7 +148,7 @@ fun BookSearchBar() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(Data.searchItems) { item ->
-                SearchElement(item)
+                BookElement(item, ReadingState())
             }
             item {
                 Spacer(modifier = Modifier.height(95.dp))

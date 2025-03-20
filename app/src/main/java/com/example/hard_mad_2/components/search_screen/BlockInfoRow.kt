@@ -1,7 +1,9 @@
 package com.example.hard_mad_2.components.search_screen
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
@@ -23,14 +25,14 @@ import com.example.hard_mad_2.models.SearchBlockType
 fun BlockInfoRow(type: SearchBlockType, text: String, authorImg: String) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding()
     ) {
         when (type) {
             SearchBlockType.RECENT_REQUEST -> {
                 Icon(
                     modifier = Modifier
                         .wrapContentSize()
-                        .padding(end = 8.dp),
+                        .padding(start = 16.dp, top = 16.dp, bottom = 16.dp, end = 8.dp),
                     painter = painterResource(R.drawable.history_icon),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary
@@ -44,18 +46,47 @@ fun BlockInfoRow(type: SearchBlockType, text: String, authorImg: String) {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .weight(0.16f)
-                        .padding(end = 8.dp)
+                        .padding(start = 16.dp, top = 12.dp, bottom = 12.dp, end = 8.dp)
                         .aspectRatio(1f)
                         .clip(CircleShape),
                     contentDescription = null
                 )
             }
+
+            SearchBlockType.QUOTES -> {}
         }
-        Text(
-            modifier = Modifier.weight(0.7578f),
-            text = text,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primary
-        )
+        if (type == SearchBlockType.QUOTES) {
+            Column(
+                modifier = Modifier.padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 12.dp,
+                    top = 12.dp
+                )
+            ) {
+                Text(
+                    modifier = Modifier.padding(bottom = 8.dp),
+                    text = text,
+                    style = MaterialTheme.typography.displayLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    text = "Код да Винчи • Дэн Браун",
+                    style = MaterialTheme.typography.displaySmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+        } else {
+            Text(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .weight(0.76f),
+                text = text,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
     }
 }

@@ -62,7 +62,8 @@ fun SearchScreenContent() {
                 SectionHeader(
                     text = stringResource(R.string.recent_requests),
                     paddingBottom = 8,
-                    paddingTop = 8
+                    paddingTop = 8,
+                    Modifier
                 )
             }
             items(listOf("iOS"), span = { GridItemSpan(maxLineSpan) }) { item ->
@@ -72,7 +73,8 @@ fun SearchScreenContent() {
                 SectionHeader(
                     text = stringResource(R.string.genres_header),
                     paddingBottom = 8,
-                    paddingTop = 16
+                    paddingTop = 16,
+                    Modifier
                 )
             }
             items(
@@ -85,7 +87,8 @@ fun SearchScreenContent() {
                 SectionHeader(
                     text = stringResource(R.string.authors),
                     paddingBottom = 8,
-                    paddingTop = 16
+                    paddingTop = 16,
+                    Modifier
                 )
             }
             items(

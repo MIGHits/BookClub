@@ -1,5 +1,6 @@
 package com.example.hard_mad_2.data_stub
 
+import androidx.compose.ui.text.toUpperCase
 import com.example.hard_mad_2.models.AuthorModel
 import com.example.hard_mad_2.models.CarouselItem
 import com.example.hard_mad_2.models.GridItem
@@ -113,26 +114,11 @@ object Data {
             name = "Чистый код: создание, анализ и рефакторинг",
             authors = listOf("Роберт Мартин")
         ),
-        SearchItem(
+        /*SearchItem(
             img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
             name = "Kotlin в действии",
             authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
-        ),
-        SearchItem(
-            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
-            name = "Kotlin в действии",
-            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
-        ),
-        SearchItem(
-            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
-            name = "Kotlin в действии",
-            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
-        ),
-        SearchItem(
-            img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
-            name = "Kotlin в действии",
-            authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
-        )
+        )*/
     )
     val genres = listOf(
         "Классика",
@@ -156,6 +142,12 @@ object Data {
         AuthorModel(
             image = "https://s3-alpha-sig.figma.com/img/27ac/1236/e42171078cc8fc2da12e831785130c99?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=uGEBLzwF3dG2CVExgsLQTwqKHPON9ItZrklRbujxxZPLsXPsl~M1PzMso~9vLPZmXuUx8A6ac2v9OFbI5u2BLc4SWSW7FctHPNZCgiX7S5Hh-nnzcNU~moqHLwg-77YPuVrU3B2BZrak9SP7SmSBcdFAKSrZ6XgOwe43p4b9szpzN8RUI0772H9Kn~Alr0Bfy0dmyhAupOxiyTPSRe7oU5CqoExO1sP8thhUC6f5rI-GJKVlnFuR1RjPR49DSqv-7kcHcVb-ykPoOntV3JFRV1GmNzIGTAXTVcJaRFve85OohL-vPFHDzZnyXGCzfr2ceef2wMRaNGxK0A7kzXaiLw__",
             "Федор Достоевский"
+        )
+    )
+    val readingBook = SearchItem(
+        "https://s3-alpha-sig.figma.com/img/6c14/f05b/ceec55a32a17da7a6043413eb5b90676?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=tXYC6en0LM1E3LVrzAONwU-v4pflVkcC32pEj1r~rVM6EHWaykmGAkFM-8VTjDHzN5OegfaS6gKae1t9MBGDaYRfdTZZO3eaJgNeoA-aNoe3x~jxHXr9lkd5Q97y~JEm6-5RB4Zm2pHTmB8F6sdks~-2u2KlsyTMYrRmir8Wc8L-eamhfRxidV-jlV~fOupkN7wKoyzvUsba4L5ydaBfneTXsfBlLYVH3VumNrIPAKvHWickzf5lNUGp8rWo99hIYNyIhp0EWycOlwvnFYlIWIeO8VitoLLyABu9QtAkfY6FuPMZ7bWZ4bGEQdohZln8w3b2oZuD0p95kz9Hb5shjQ__",
+        "Код да винчи".toUpperCase(
+            androidx.compose.ui.text.intl.Locale.current
         )
     )
 }

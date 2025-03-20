@@ -33,10 +33,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.hard_mad_2.R
 import com.example.hard_mad_2.common.Constant.HEADLINE_LARGE_SIZE
+import com.example.hard_mad_2.common.Constant.LARGE_BUTTON
+import com.example.hard_mad_2.common.Constant.SMALL_BUTTON
 import com.example.hard_mad_2.common.Constant.SMALL_HEIGHT
 import com.example.hard_mad_2.common.Constant.SMALL_WIDTH
 import com.example.hard_mad_2.common.Constant.TITLE_LARGE_SIZE
 import com.example.hard_mad_2.components.BottomNavigationBar
+import com.example.hard_mad_2.screen.routes.BookmarksScreen
 import com.example.hard_mad_2.screen.routes.LibraryScreen
 import com.example.hard_mad_2.screen.routes.SearchScreen
 import com.example.hard_mad_2.screen.routes.SignInScreen
@@ -53,8 +56,8 @@ fun NavigationScreen(
     val screenHeight = configuration.screenHeightDp
 
     val playButtonSize =
-        if (screenWidth < SMALL_WIDTH || screenHeight < SMALL_HEIGHT) 70.dp else
-            80.dp
+        if (screenWidth < SMALL_WIDTH || screenHeight < SMALL_HEIGHT) SMALL_BUTTON.dp else
+            LARGE_BUTTON.dp
 
     var bottomBarVisible by remember { mutableStateOf(false) }
 
@@ -75,7 +78,7 @@ fun NavigationScreen(
 
         NavHost(
             navController = navController,
-            startDestination = SearchScreen.toString(),
+            startDestination = BookmarksScreen.toString(),
             modifier = modifier.fillMaxSize()
         ) {
             composable(SignInScreen.toString()) {
@@ -89,6 +92,10 @@ fun NavigationScreen(
             composable(SearchScreen.toString()) {
                 bottomBarVisible = true
                 SearchScreenContent()
+            }
+            composable(BookmarksScreen.toString()) {
+                bottomBarVisible = true
+                BookmarksScreenContent()
             }
         }
         if (bottomBarVisible) {

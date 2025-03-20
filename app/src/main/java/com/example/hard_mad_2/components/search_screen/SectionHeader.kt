@@ -9,9 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SectionHeader(text: String, paddingBottom: Int, paddingTop: Int) {
+fun SectionHeader(text: String, paddingBottom: Int, paddingTop: Int, modifier: Modifier) {
     Text(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(bottom = paddingBottom.dp, top = paddingTop.dp),
         text = text,

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,23 +18,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.hard_mad_2.models.SearchItem
+import com.example.hard_mad_2.screen.BookProgressBar
+import com.example.hard_mad_2.state.ReadingState
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SearchElement(searchBook: SearchItem) {
+fun BookElement(searchBook: SearchItem, readingState: ReadingState) {
     Row(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .fillMaxHeight(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
             modifier = Modifier
-                .weight(80f / 380f)
+                .weight(80f / 315f)
                 .padding(end = 16.dp)
                 .aspectRatio(0.635f)
                 .clip(RoundedCornerShape(4.dp)),
@@ -52,19 +57,30 @@ fun SearchElement(searchBook: SearchItem) {
                 color = MaterialTheme.colorScheme.primary
             )
             Spacer(Modifier.height(4.dp))
-            FlowRow(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                searchBook.authors.forEachIndexed { index, item ->
-                    Text(
-                        text = if (index != searchBook.authors.size - 1) {
-                            "$item, "
-                        } else {
-                            item
-                        },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.primary
-                    )
+            if (readingState.isReading) {
+                Text(
+                    modifier = Modifier.padding(bottom = 16.dp),
+                    text = readingState.chapter,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.Bold
+                )
+                BookProgressBar(readingState.progress / 100f)
+            } else {
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    searchBook.authors?.forEachIndexed { index, item ->
+                        Text(
+                            text = if (index != searchBook.authors.size - 1) {
+                                "$item, "
+                            } else {
+                                item
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                 }
             }
         }
