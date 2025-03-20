@@ -42,10 +42,11 @@ fun SearchBar() {
         modifier = if (expanded) {
             Modifier
                 .fillMaxWidth()
+                .padding(bottom = 16.dp, top = 16.dp)
         } else {
             Modifier
                 .fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp)
+                .padding(16.dp)
         },
         shape = RoundedCornerShape(28.dp),
         inputField = {

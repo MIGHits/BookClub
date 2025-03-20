@@ -9,4 +9,7 @@
     <string name="latest_books">НОВИНКИ</string>
     <string name="popular_books">ПОПУЛЯРНЫЕ КНИГИ</string>
     <string name="book_search">Поиск по книгам</string>
+    <string name="recent_requests">НЕДАВНИЕ ЗАПРОСЫ</string>
+    <string name="genres_header">ЖАНРЫ</string>
+    <string name="authors">АВТОРЫ</string>
 </resources>
