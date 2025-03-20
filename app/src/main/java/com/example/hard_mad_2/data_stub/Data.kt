@@ -3,7 +3,6 @@ package com.example.hard_mad_2.data_stub
 import com.example.hard_mad_2.models.CarouselItem
 import com.example.hard_mad_2.models.GridItem
 import com.example.hard_mad_2.models.SearchItem
-import com.example.hard_mad_2.screen.SearchElement
 import java.util.Locale
 
 object Data {
