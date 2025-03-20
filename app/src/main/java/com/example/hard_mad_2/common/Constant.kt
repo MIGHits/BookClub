@@ -6,4 +6,5 @@ object Constant {
     const val SMALL_HEIGHT = 740
     const val HEADLINE_LARGE_SIZE = 32
     const val TITLE_LARGE_SIZE = 68
+    const val GRID_SPAN_COUNT = 2
 }

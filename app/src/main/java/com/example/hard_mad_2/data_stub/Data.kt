@@ -1,5 +1,6 @@
 package com.example.hard_mad_2.data_stub
 
+import com.example.hard_mad_2.models.AuthorModel
 import com.example.hard_mad_2.models.CarouselItem
 import com.example.hard_mad_2.models.GridItem
 import com.example.hard_mad_2.models.SearchItem
@@ -131,6 +132,30 @@ object Data {
             img = "https://s3-alpha-sig.figma.com/img/ba32/f5b4/3e6bebdca2ddfdcc9982a23afbb2ad2e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NlsktxrcZN0KDLBLPATSSHL~ClO99WwzvkyvOHDZ~1OM~SOtoyv0bcg2hL8OTWDN1t8-YfigCSC8qEOH2KtQdduKUMAG1mqsevnLDZm7txLVdHsG0k8FmteCS1G1fSpP76~JECTTEvjJU-MPBEXhTTQHDj3922GeN0LY2peI~LZG5B8tMDYZi3W58ErWNiswJmxYtT1h7xaWvh9o~rUqGEhy5xzaY7K6cfs3IF-xtHT~WOBfUmnuZrxI8r44C4QJ~IQ5BrUjvXKaXgkGSAkJTzEayRQ3gloQj2kpYFBYlLg-EOkA9zXiJFOvZvFCGrEEjKT8doLBQPVz9i~RjA24lA__",
             name = "Kotlin в действии",
             authors = listOf("Дмитрий Жемеров", "Светлана Исакова")
+        )
+    )
+    val genres = listOf(
+        "Классика",
+        "Фэнтези",
+        "Фантастика",
+        "Детектив",
+        "Триллер",
+        "Исторический роман",
+        "Любовный роман",
+        "Приключения"
+    )
+    val authors = listOf(
+        AuthorModel(
+            image = "https://s3-alpha-sig.figma.com/img/554e/d976/58713175fa8334c8e0318b7bcf1ca253?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=AYRPfkq1hNsMjBhS64OHizrFItoY47-wurtW2hlQ3jzlIobixITGHzF-9CojEkr5aD21XAOHWtHqswbSnuNSe~b8XT9S-7Yv8L-~eiKJBGISYyPLbsPvQXcd-Ho1labFhHNiKBdWsRPmPrj0RQ~NLX7b4j1Q1gxU5zaO6nQnn1l~uxCPIwdYqIxc2u6YOHCVXzjFroF~4Vvhyv3MXXNi2kOSpAP02z2sKLg6qyWaQ5ScwXOIRUZmz2B-LbVACguYjOZqMuCNxfhH8gwju2ehU0N3k~0X2py~1DN0XgHGWn10he-2Fai3pr7Ye2mC25wNJSE5NHA1cAdtN7q3rlW3iA__",
+            "Братья Стругацкие"
+        ),
+        AuthorModel(
+            image = "https://s3-alpha-sig.figma.com/img/fc2f/2f1c/898bdf2cb5cf0120237adce81ea30a40?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=RX99mYMrMD15y4c7zcS0ggXjBzvNdxjESD27Fdsq~YLYU9317BX8HT5LPQsB2NvsDYTEVaS-DDKnlJy7NBCLAQva4GA8-rWl547uN18iLwifga~1kqU3APuuVY-zTEck8HIyNLb~IAuKF~q-swjKywJeqyQV4VN73YuWtr~y8-EplHSdzwiX2~wePFYBLhYo5jBriVrEFUBhLjswyegmb4ZHVWb60Mu5FraJPneaDewIXJAvRPzUWeV821lVnBEWYodtMuT6RbJnoLW~-th8g~z849ECIa~QFI-Zjq3VRoyUxthR~759vn1PbS49tgF4tow-8aNhFYy-nMc-LlRyjA__",
+            "Дэн Браун"
+        ),
+        AuthorModel(
+            image = "https://s3-alpha-sig.figma.com/img/27ac/1236/e42171078cc8fc2da12e831785130c99?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=uGEBLzwF3dG2CVExgsLQTwqKHPON9ItZrklRbujxxZPLsXPsl~M1PzMso~9vLPZmXuUx8A6ac2v9OFbI5u2BLc4SWSW7FctHPNZCgiX7S5Hh-nnzcNU~moqHLwg-77YPuVrU3B2BZrak9SP7SmSBcdFAKSrZ6XgOwe43p4b9szpzN8RUI0772H9Kn~Alr0Bfy0dmyhAupOxiyTPSRe7oU5CqoExO1sP8thhUC6f5rI-GJKVlnFuR1RjPR49DSqv-7kcHcVb-ykPoOntV3JFRV1GmNzIGTAXTVcJaRFve85OohL-vPFHDzZnyXGCzfr2ceef2wMRaNGxK0A7kzXaiLw__",
+            "Федор Достоевский"
         )
     )
 }

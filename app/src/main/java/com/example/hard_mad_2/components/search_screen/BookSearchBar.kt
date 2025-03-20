@@ -3,9 +3,11 @@ package com.example.hard_mad_2.components.search_screen
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,6 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -34,7 +37,7 @@ import com.example.hard_mad_2.data_stub.Data
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchBar() {
+fun BookSearchBar() {
     var textFieldState by remember { mutableStateOf("") }
     var expanded by rememberSaveable { mutableStateOf(false) }
 
@@ -42,7 +45,6 @@ fun SearchBar() {
         modifier = if (expanded) {
             Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp, top = 16.dp)
         } else {
             Modifier
                 .fillMaxWidth()
@@ -138,11 +140,17 @@ fun SearchBar() {
         expanded = expanded, onExpandedChange = { expanded = it },
     ) {
         LazyColumn(
-            modifier = Modifier.fillMaxHeight(),
-            contentPadding = PaddingValues(16.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 16.dp, end = 16.dp, top = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(Data.searchItems) { item ->
                 SearchElement(item)
+            }
+            item {
+                Spacer(modifier = Modifier.height(95.dp))
             }
         }
     }

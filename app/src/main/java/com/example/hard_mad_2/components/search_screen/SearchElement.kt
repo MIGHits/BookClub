@@ -28,8 +28,7 @@ import com.example.hard_mad_2.models.SearchItem
 fun SearchElement(searchBook: SearchItem) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 16.dp),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(

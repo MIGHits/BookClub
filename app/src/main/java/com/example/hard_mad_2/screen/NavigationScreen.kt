@@ -1,5 +1,6 @@
 package com.example.hard_mad_2.screen
 
+//noinspection UsingMaterialAndMaterial3Libraries
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -23,13 +23,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.hard_mad_2.R
+import com.example.hard_mad_2.common.Constant.HEADLINE_LARGE_SIZE
+import com.example.hard_mad_2.common.Constant.SMALL_HEIGHT
+import com.example.hard_mad_2.common.Constant.SMALL_WIDTH
+import com.example.hard_mad_2.common.Constant.TITLE_LARGE_SIZE
 import com.example.hard_mad_2.components.BottomNavigationBar
 import com.example.hard_mad_2.screen.routes.LibraryScreen
 import com.example.hard_mad_2.screen.routes.SearchScreen
@@ -42,6 +48,14 @@ fun NavigationScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController
 ) {
+    val configuration = LocalConfiguration.current
+    val screenWidth = configuration.screenWidthDp
+    val screenHeight = configuration.screenHeightDp
+
+    val playButtonSize =
+        if (screenWidth < SMALL_WIDTH || screenHeight < SMALL_HEIGHT) 70.dp else
+            80.dp
+
     var bottomBarVisible by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -65,6 +79,7 @@ fun NavigationScreen(
             modifier = modifier.fillMaxSize()
         ) {
             composable(SignInScreen.toString()) {
+                bottomBarVisible = false
                 SignInScreenContent()
             }
             composable(LibraryScreen.toString()) {
@@ -92,9 +107,9 @@ fun NavigationScreen(
             FloatingActionButton(
                 onClick = {},
                 modifier = Modifier
-                    .padding(bottom = 32.dp)
+                    .padding(bottom = 34.dp)
                     .align(Alignment.BottomCenter)
-                    .size(80.dp),
+                    .size(playButtonSize),
                 shape = CircleShape,
                 backgroundColor = MaterialTheme.colorScheme.secondary
             ) {
