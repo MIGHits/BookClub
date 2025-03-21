@@ -1,50 +1,27 @@
 package com.example.hard_mad_2.screen
 
+
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-//noinspection UsingMaterialAndMaterial3Libraries
-import androidx.compose.material.FloatingActionButton
-//noinspection UsingMaterialAndMaterial3Libraries
-import androidx.compose.material.Text
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
 import com.example.hard_mad_2.R
 import com.example.hard_mad_2.components.BottomSpacer
 import com.example.hard_mad_2.components.book_details.ActionButtons
+import com.example.hard_mad_2.components.book_details.BookPart
 import com.example.hard_mad_2.components.book_details.BookPreview
 import com.example.hard_mad_2.components.book_details.BookShortInfo
+import com.example.hard_mad_2.components.bookmarks_screen.BookProgressBar
 import com.example.hard_mad_2.components.search_screen.SectionHeader
 import com.example.hard_mad_2.data_stub.Data
 import kotlinx.coroutines.launch
@@ -79,6 +56,7 @@ fun BookDetailsContent() {
         LazyColumn(
             state = scrollState,
             modifier = Modifier
+                .fillMaxSize()
                 .padding(start = 16.dp, end = 16.dp)
                 .clickable {
                     coroutineScope.launch {
@@ -103,6 +81,23 @@ fun BookDetailsContent() {
                     modifier = Modifier
                 )
             }
+            item {
+                BookProgressBar(0.5f)
+            }
+            item {
+                SectionHeader(
+                    stringResource(R.string.book_content),
+                    paddingBottom = 0,
+                    paddingTop = 16,
+                    modifier = Modifier
+                )
+            }
+            items(
+                Data.bookChapters
+            ) { item ->
+                BookPart(item)
+            }
         }
     }
 }
+

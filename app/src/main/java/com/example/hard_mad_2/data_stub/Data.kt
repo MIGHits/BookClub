@@ -2,7 +2,9 @@ package com.example.hard_mad_2.data_stub
 
 import androidx.compose.ui.text.toUpperCase
 import com.example.hard_mad_2.models.AuthorModel
+import com.example.hard_mad_2.models.BookChapter
 import com.example.hard_mad_2.models.CarouselItem
+import com.example.hard_mad_2.models.ChapterStatus
 import com.example.hard_mad_2.models.GridItem
 import com.example.hard_mad_2.models.SearchItem
 import java.util.Locale
@@ -150,6 +152,18 @@ object Data {
             androidx.compose.ui.text.intl.Locale.current
         )
     )
-    val bookDetailsPreview = "https://s3-alpha-sig.figma.com/img/e11b/cb67/f5e3dc5e3a35431158e3ccca0bd40b5b?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NQfOYlq34HRq32ftA7l1I-Tdd~htEktlLHbe65jxe8LH52aGpj3TPA~SjnzRa22jXBOLlZntcTruX40udq9xp04GPgLZGgsr6YQ6fOO-YWAzfWaacmsHPt-Vjw~2bfw-2YighWpBsfvc5oHNxib4I947zBcLEQxRveribhFw-ZvU06FZ2jf7msdDTnpcDzAkwyJvcJ-aFPcRCDTR~thlfUOVyc69Iu4WHHKP0cHag87ASZv1SrG2cXjjoB9N7cjudcH5iql39HedvRw8cD9j-KEowWTXkvaUnfR6vT4RRF5kcMXVef202Z-IjFM8zypU9WtI1cb9OABFvt2VMwTMJw__"
+    val bookChapters = listOf(
+        BookChapter(name = "Факты", chapterStatus = ChapterStatus.ALREADY_READ),
+        BookChapter(name = "Пролог", chapterStatus = ChapterStatus.READING_NOW),
+        BookChapter(name = "Глава 1", chapterStatus = ChapterStatus.NOT_STARTED),
+        BookChapter(name = "Глава 2", chapterStatus = ChapterStatus.NOT_STARTED),
+        BookChapter(name = "Глава 3", chapterStatus = ChapterStatus.NOT_STARTED),
+        BookChapter(name = "Глава 4", chapterStatus = ChapterStatus.NOT_STARTED),
+        BookChapter(name = "Глава 5", chapterStatus = ChapterStatus.NOT_STARTED),
+        BookChapter(name = "Глава 6", chapterStatus = ChapterStatus.NOT_STARTED),
+        BookChapter(name = "Глава 7", chapterStatus = ChapterStatus.NOT_STARTED),
+    )
+    val bookDetailsPreview =
+        "https://s3-alpha-sig.figma.com/img/e11b/cb67/f5e3dc5e3a35431158e3ccca0bd40b5b?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NQfOYlq34HRq32ftA7l1I-Tdd~htEktlLHbe65jxe8LH52aGpj3TPA~SjnzRa22jXBOLlZntcTruX40udq9xp04GPgLZGgsr6YQ6fOO-YWAzfWaacmsHPt-Vjw~2bfw-2YighWpBsfvc5oHNxib4I947zBcLEQxRveribhFw-ZvU06FZ2jf7msdDTnpcDzAkwyJvcJ-aFPcRCDTR~thlfUOVyc69Iu4WHHKP0cHag87ASZv1SrG2cXjjoB9N7cjudcH5iql39HedvRw8cD9j-KEowWTXkvaUnfR6vT4RRF5kcMXVef202Z-IjFM8zypU9WtI1cb9OABFvt2VMwTMJw__"
 }
 

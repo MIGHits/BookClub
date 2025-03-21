@@ -19,4 +19,5 @@
     <string name="read_book">Читать</string>
     <string name="add_favorite">В избранное</string>
     <string name="already_read">ПРОЧИТАНО</string>
+    <string name="book_content">ОГЛАВЛЕНИЕ</string>
 </resources>

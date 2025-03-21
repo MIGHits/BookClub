@@ -27,24 +27,27 @@ fun BookProgressBar(progress: Float) {
                     color = MaterialTheme.colorScheme.primary
                 )
         )
-        Spacer(Modifier.width(4.dp))
-        Box(
-            modifier = Modifier
-                .weight(1 - progress)
-                .background(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    shape = RoundedCornerShape(24.dp)
-                ),
-            contentAlignment = Alignment.CenterEnd
-        ) {
+        if (progress != 1f) {
+            Spacer(Modifier.width(4.dp))
+
             Box(
                 modifier = Modifier
-                    .size(4.dp)
+                    .weight(1 - progress)
                     .background(
-                        shape = CircleShape,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-            )
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        shape = RoundedCornerShape(24.dp)
+                    ),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(4.dp)
+                        .background(
+                            shape = CircleShape,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                )
+            }
         }
     }
 }
