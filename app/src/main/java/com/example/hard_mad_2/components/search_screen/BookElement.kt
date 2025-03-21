@@ -23,8 +23,8 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.example.hard_mad_2.components.bookmarks_screen.BookProgressBar
 import com.example.hard_mad_2.models.SearchItem
-import com.example.hard_mad_2.screen.BookProgressBar
 import com.example.hard_mad_2.state.ReadingState
 
 @OptIn(ExperimentalLayoutApi::class)

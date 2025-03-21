@@ -39,6 +39,7 @@ import com.example.hard_mad_2.common.Constant.SMALL_HEIGHT
 import com.example.hard_mad_2.common.Constant.SMALL_WIDTH
 import com.example.hard_mad_2.common.Constant.TITLE_LARGE_SIZE
 import com.example.hard_mad_2.components.BottomNavigationBar
+import com.example.hard_mad_2.screen.routes.BookDetails
 import com.example.hard_mad_2.screen.routes.BookmarksScreen
 import com.example.hard_mad_2.screen.routes.LibraryScreen
 import com.example.hard_mad_2.screen.routes.SearchScreen
@@ -78,7 +79,7 @@ fun NavigationScreen(
 
         NavHost(
             navController = navController,
-            startDestination = BookmarksScreen.toString(),
+            startDestination = BookDetails.toString(),
             modifier = modifier.fillMaxSize()
         ) {
             composable(SignInScreen.toString()) {
@@ -96,6 +97,10 @@ fun NavigationScreen(
             composable(BookmarksScreen.toString()) {
                 bottomBarVisible = true
                 BookmarksScreenContent()
+            }
+            composable(BookDetails.toString()) {
+                bottomBarVisible = false
+                BookDetailsContent()
             }
         }
         if (bottomBarVisible) {
