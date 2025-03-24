@@ -20,4 +20,8 @@
     <string name="add_favorite">В избранное</string>
     <string name="already_read">ПРОЧИТАНО</string>
     <string name="book_content">ОГЛАВЛЕНИЕ</string>
+    <string name="book_contents_header">ОГЛАВЛЕНИЕ</string>
+    <string name="settings_header">НАСТРОЙКИ</string>
+    <string name="font_size_header">Размер шрифта</string>
+    <string name="line_height_size">Расстояние между строками</string>
 </resources>

@@ -15,7 +15,8 @@ val Alumni = FontFamily(
 
 val VelaSans = FontFamily(
     Font(R.font.vela_sans_regular, FontWeight.Normal),
-    Font(R.font.vela_sans_bold, FontWeight.Bold)
+    Font(R.font.vela_sans_bold, FontWeight.Bold),
+    Font(R.font.vela_sans_medium, FontWeight.Medium)
 )
 
 val Georgia = FontFamily(

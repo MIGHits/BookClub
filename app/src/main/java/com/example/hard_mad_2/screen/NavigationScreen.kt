@@ -41,6 +41,7 @@ import com.example.hard_mad_2.common.Constant.TITLE_LARGE_SIZE
 import com.example.hard_mad_2.components.BottomNavigationBar
 import com.example.hard_mad_2.screen.routes.BookDetails
 import com.example.hard_mad_2.screen.routes.BookmarksScreen
+import com.example.hard_mad_2.screen.routes.ChapterScreen
 import com.example.hard_mad_2.screen.routes.LibraryScreen
 import com.example.hard_mad_2.screen.routes.SearchScreen
 import com.example.hard_mad_2.screen.routes.SignInScreen
@@ -79,7 +80,7 @@ fun NavigationScreen(
 
         NavHost(
             navController = navController,
-            startDestination = BookDetails.toString(),
+            startDestination = ChapterScreen.toString(),
             modifier = modifier.fillMaxSize()
         ) {
             composable(SignInScreen.toString()) {
@@ -101,6 +102,10 @@ fun NavigationScreen(
             composable(BookDetails.toString()) {
                 bottomBarVisible = false
                 BookDetailsContent()
+            }
+            composable(ChapterScreen.toString()) {
+                bottomBarVisible = false
+                ChapterScreenContent()
             }
         }
         if (bottomBarVisible) {
