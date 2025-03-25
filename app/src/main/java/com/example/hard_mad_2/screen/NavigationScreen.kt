@@ -135,12 +135,12 @@ fun NavigationScreen(
                     backAction = { navController.navigateUp() },
                     bookData = Data.currentBookData,
                     book = Data.readingBook,
-                    readAction = { name, currentChapter, content, chapters ->
+                    readAction = {
                         navController.navigate(ChapterScreen.toString()) {
                             launchSingleTop
                         }
                     },
-                    favoriteAction = {}
+                    favoriteAction = { searchItem -> Data.searchItems.add(searchItem) }
                 )
             }
             composable(ChapterScreen.toString()) {

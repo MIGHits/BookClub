@@ -107,7 +107,7 @@ object Data {
             "Эрик Мария Ремарк"
         )
     )
-    val searchItems = listOf(
+    val searchItems = mutableListOf(
         SearchItem(
             img = "https://imo10.labirint.ru/books/626058/cover.jpg/484-0",
             name = "SWift для детей",

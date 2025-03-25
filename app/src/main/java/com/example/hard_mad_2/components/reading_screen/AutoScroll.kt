@@ -6,26 +6,34 @@ import androidx.compose.runtime.LaunchedEffect
 import com.example.hard_mad_2.common.Constant.BASE_SPEED
 import kotlinx.coroutines.delay
 
+
 @Composable
 fun AutoScroll(
     isPlaying: Boolean,
     isUserScrolling: Boolean,
     sentences: List<String>,
     lazyListState: LazyListState,
-    updateIndex: (Int) -> Unit,
-    stop: () -> Unit
+    currentSentenceIndex: Int,
+    onSentenceChange: (Int) -> Unit,
+    onPlaybackEnd: () -> Unit
 ) {
     LaunchedEffect(isPlaying) {
         if (isPlaying) {
-            for (i in 0 until sentences.size) {
+            for (i in currentSentenceIndex.coerceAtLeast(0) until sentences.size) {
                 if (!isPlaying) break
-                if (isUserScrolling) while (isUserScrolling) delay(300)
-                updateIndex(i)
+                if (isUserScrolling) {
+                    while (isUserScrolling) {
+                        delay(300)
+                    }
+                }
+
+                onSentenceChange(i)
                 lazyListState.animateScrollToItem(i, scrollOffset = -75)
-                delay(sentences[i].length * BASE_SPEED)
+
+                val sentenceDelay = sentences[i].length * BASE_SPEED
+                delay(sentenceDelay)
             }
-            stop()
-            updateIndex(-1)
+            onPlaybackEnd()
         }
     }
 }

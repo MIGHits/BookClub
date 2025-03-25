@@ -126,7 +126,11 @@ fun BookSearchBar(
                     colors = TextFieldDefaults.colors(
                         cursorColor = MaterialTheme.colorScheme.secondary,
                         focusedContainerColor = MaterialTheme.colorScheme.background,
-                        unfocusedContainerColor = MaterialTheme.colorScheme.onBackground
+                        unfocusedContainerColor = if (expanded) {
+                            MaterialTheme.colorScheme.background
+                        } else {
+                            MaterialTheme.colorScheme.onBackground
+                        }
                     ),
                 )
             }

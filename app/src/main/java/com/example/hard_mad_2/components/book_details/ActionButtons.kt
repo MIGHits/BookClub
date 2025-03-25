@@ -32,7 +32,7 @@ fun ActionButtons(readAction: () -> Unit, favoriteAction: () -> Unit) {
     ) {
         Button(
             modifier = Modifier.weight(0.552f),
-            onClick = {},
+            onClick = { readAction() },
             shape = RoundedCornerShape(50),
             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             contentPadding = PaddingValues(
@@ -57,7 +57,7 @@ fun ActionButtons(readAction: () -> Unit, favoriteAction: () -> Unit) {
         Spacer(Modifier.width(8.dp))
         Button(
             modifier = Modifier.weight(0.426f),
-            onClick = {},
+            onClick = { favoriteAction() },
             shape = RoundedCornerShape(50),
             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onPrimaryContainer),
             contentPadding = PaddingValues(

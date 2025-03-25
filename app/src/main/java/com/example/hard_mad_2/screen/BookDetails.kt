@@ -40,8 +40,8 @@ fun BookDetailsContent(
     backAction: () -> Unit,
     bookData: ReadingData,
     book: SearchItem,
-    readAction: (String, Int, String, List<BookChapter>) -> Unit,
-    favoriteAction: () -> Unit
+    readAction: () -> Unit,
+    favoriteAction: (SearchItem) -> Unit
 ) {
     val scrollState = rememberLazyListState()
     val state = rememberCollapsingToolbarScaffoldState()
@@ -57,7 +57,9 @@ fun BookDetailsContent(
                 modifier = Modifier.parallax(0.5f)
             ) {
                 BookPreview(backAction, Data.bookDetailsPreview)
-                ActionButtons(readAction = {}, favoriteAction = { TODO() })
+                ActionButtons(
+                    readAction = { readAction() },
+                    favoriteAction = { favoriteAction(book) })
             }
         },
     ) {
