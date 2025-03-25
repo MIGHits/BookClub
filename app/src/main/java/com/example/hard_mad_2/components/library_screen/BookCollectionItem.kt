@@ -1,5 +1,6 @@
 package com.example.hard_mad_2.components.library_screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,8 +18,8 @@ import com.example.hard_mad_2.models.GridItem
 import com.example.hard_mad_2.ui.theme.Alumni
 
 @Composable
-fun BookCollectionItem(book: GridItem) {
-    Column {
+fun BookCollectionItem(book: GridItem, toBookDetails: () -> Unit) {
+    Column(modifier = Modifier.clickable { toBookDetails() }) {
         AsyncImage(
             model = book.img,
             contentDescription = null,

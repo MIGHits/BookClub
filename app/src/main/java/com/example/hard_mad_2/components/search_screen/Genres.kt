@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.hard_mad_2.models.SearchBlockType
 
 @Composable
-fun Genres(rowItems: List<String>) {
+fun Genres(rowItems: List<String>, onClick: (String) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -26,7 +26,7 @@ fun Genres(rowItems: List<String>) {
                     .weight(1f)
                     .wrapContentSize()
             ) {
-                SearchScreenGridItem(item, SearchBlockType.GENRE)
+                SearchScreenGridItem(item, SearchBlockType.GENRE, onClick = { onClick(item) })
             }
         }
     }

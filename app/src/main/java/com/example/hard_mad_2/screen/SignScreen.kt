@@ -42,7 +42,7 @@ import com.example.hard_mad_2.state.FormState
 import java.util.Locale
 
 @Composable
-fun SignInScreenContent() {
+fun SignInScreenContent(onSignIn: () -> Unit) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp
     val screenHeight = configuration.screenHeightDp
@@ -63,6 +63,7 @@ fun SignInScreenContent() {
         verticalArrangement = Arrangement.Center
     ) {
         Spacer(Modifier.height(48.dp))
+
         AutoScrollingLazyRow(
             modifier = Modifier
                 .fillMaxWidth()
@@ -79,6 +80,7 @@ fun SignInScreenContent() {
             }
         )
         Spacer(Modifier.height(48.dp))
+
         Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
             Text(
                 text = stringResource(R.string.open_for_yourself).uppercase(Locale.ROOT),
@@ -121,7 +123,7 @@ fun SignInScreenContent() {
                 }
             )
             Button(
-                onClick = { TODO() },
+                onClick = { onSignIn() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 24.dp, bottom = 0.dp)

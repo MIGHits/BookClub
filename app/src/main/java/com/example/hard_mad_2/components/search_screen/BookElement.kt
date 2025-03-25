@@ -25,11 +25,11 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.hard_mad_2.components.bookmarks_screen.BookProgressBar
 import com.example.hard_mad_2.models.SearchItem
-import com.example.hard_mad_2.state.ReadingState
+import com.example.hard_mad_2.state.ReadingData
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun BookElement(searchBook: SearchItem, readingState: ReadingState) {
+fun BookElement(searchBook: SearchItem, readingData: ReadingData) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -57,15 +57,15 @@ fun BookElement(searchBook: SearchItem, readingState: ReadingState) {
                 color = MaterialTheme.colorScheme.primary
             )
             Spacer(Modifier.height(4.dp))
-            if (readingState.isReading) {
+            if (readingData.isReading) {
                 Text(
                     modifier = Modifier.padding(bottom = 16.dp),
-                    text = readingState.chapter,
+                    text = readingData.chapter,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Bold
                 )
-                BookProgressBar(readingState.progress / 100f)
+                BookProgressBar(readingData.progress / 100f)
             } else {
                 FlowRow(
                     modifier = Modifier.fillMaxWidth()

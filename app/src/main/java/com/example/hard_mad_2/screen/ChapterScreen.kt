@@ -8,13 +8,8 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,11 +18,6 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.IconButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -43,12 +33,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
-import com.example.hard_mad_2.R
 import com.example.hard_mad_2.components.BottomSpacer
+import com.example.hard_mad_2.components.reading_screen.BottomBar
+import com.example.hard_mad_2.components.reading_screen.TopBar
 import com.example.hard_mad_2.components.reading_screen.settings_sheet.SettingBottomSheet
 import com.example.hard_mad_2.components.reading_screen.side_menu.BookContentMenu
 import kotlinx.coroutines.delay
@@ -57,6 +47,11 @@ import kotlinx.coroutines.delay
 fun ChapterScreenContent() {
     var isBookMenuOpen by remember { mutableStateOf(false) }
     var showBottomSheet by remember { mutableStateOf(false) }
+
+    var currentSentenceIndex by remember { mutableIntStateOf(-1) }
+    val lazyListState = rememberLazyListState()
+    var isPlaying by remember { mutableStateOf(false) }
+    var isUserScrolling by remember { mutableStateOf(false) }
 
     val text = "Париж, Лувр\u202821.46\n" +
             "Знаменитый куратор Жак Соньер, пошатыва\u0002ясь, прошел под сводчатой аркой Большой га\u0002лереи и устремился к первой попавшейся ему" +
@@ -81,11 +76,6 @@ fun ChapterScreenContent() {
             .map { it.trim() })
     }
 
-
-    var currentSentenceIndex by remember { mutableIntStateOf(-1) }
-    val lazyListState = rememberLazyListState()
-    var isPlaying by remember { mutableStateOf(false) }
-    var isUserScrolling by remember { mutableStateOf(false) }
 
     val baseSpeed = 30L
 
@@ -129,115 +119,15 @@ fun ChapterScreenContent() {
     ) {
         Scaffold(
             topBar = {
-                Row(
-                    modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, top = 16.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    FloatingActionButton(
-                        onClick = {},
-                        backgroundColor = MaterialTheme.colorScheme.primary,
-                        modifier =
-                        Modifier
-                            .fillMaxSize(0.12f)
-                            .aspectRatio(1f),
-                        shape = CircleShape
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.back_icon),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onBackground,
-                        )
-                    }
-                    Column(
-                        modifier = Modifier.weight(0.663f),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "КОД ДА ВИНЧИ",
-                            style = MaterialTheme.typography.headlineMedium,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            text = "Пролог",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                    }
-                    Spacer(
-                        modifier = Modifier
-                            .weight(0.12f)
-                            .aspectRatio(1f)
-                    )
-                }
+                TopBar(bookName = "КОД ДА ВИНЧИ", chapter = "Пролог", backAction = {})
             },
             bottomBar = {
-                Column(modifier = Modifier.background(color = MaterialTheme.colorScheme.primary)) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(start = 16.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            IconButton(onClick = { }) {
-                                Icon(
-                                    painter = painterResource(R.drawable.previous_icon),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onBackground
-                                )
-                            }
-                            IconButton(onClick = {
-                                isBookMenuOpen = !isBookMenuOpen
-                            }) {
-                                Icon(
-                                    painter = painterResource(R.drawable.contents_icon),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onBackground
-                                )
-                            }
-                            IconButton(onClick = {}) {
-                                Icon(
-                                    painter = painterResource(R.drawable.next_icon),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onBackground
-                                )
-                            }
-                            IconButton(onClick = { showBottomSheet = !showBottomSheet }) {
-                                Icon(
-                                    painter = painterResource(R.drawable.settings_icon),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onBackground
-                                )
-                            }
-                        }
-                        FloatingActionButton(
-                            onClick = { isPlaying = !isPlaying },
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-                            shape = RoundedCornerShape(16.dp),
-                            backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer
-                        ) {
-                            if (isPlaying) {
-                                Icon(
-                                    painter = painterResource(R.drawable.pause_icon),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            } else {
-                                Icon(
-                                    painter = painterResource(R.drawable.play_icon),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            }
-                        }
-                    }
-                    BottomSpacer(24)
-                }
+                BottomBar(
+                    bookMenuAction = { isBookMenuOpen = !isBookMenuOpen },
+                    showBottomSheet = { showBottomSheet = !showBottomSheet },
+                    play = { isPlaying = !isPlaying },
+                    isPlaying
+                )
             }
         ) { paddingValues ->
             Box(

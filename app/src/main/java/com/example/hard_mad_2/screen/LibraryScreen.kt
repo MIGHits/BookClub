@@ -23,7 +23,7 @@ import com.example.hard_mad_2.data_stub.Data
 
 
 @Composable
-fun LibraryScreenContent() {
+fun LibraryScreenContent(toBookDetails: () -> Unit) {
     LazyVerticalGrid(
         modifier = Modifier
             .fillMaxSize()
@@ -61,7 +61,7 @@ fun LibraryScreenContent() {
             )
         }
         items(Data.gridList) { item ->
-            BookCollectionItem(item)
+            BookCollectionItem(item, toBookDetails)
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
             Spacer(Modifier.height(100.dp))

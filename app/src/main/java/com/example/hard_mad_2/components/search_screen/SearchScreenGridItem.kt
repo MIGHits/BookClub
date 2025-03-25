@@ -1,6 +1,7 @@
 package com.example.hard_mad_2.components.search_screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
@@ -17,20 +18,29 @@ import com.example.hard_mad_2.R
 import com.example.hard_mad_2.models.SearchBlockType
 
 @Composable
-fun SearchScreenGridItem(text: String, type: SearchBlockType, authorImg: String = "") {
+fun SearchScreenGridItem(
+    text: String,
+    type: SearchBlockType,
+    authorImg: String = "",
+    onClick: (String) -> Unit,
+    removeFromRecent: (String) -> Unit = {}
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(
                 shape = RoundedCornerShape(8.dp),
                 color = MaterialTheme.colorScheme.onPrimaryContainer
-            ),
+            )
+            .clickable {
+                onClick(text)
+            },
         contentAlignment = Alignment.CenterStart
     ) {
         BlockInfoRow(type = type, text = text, authorImg = authorImg)
         if (type == SearchBlockType.RECENT_REQUEST) {
             IconButton(
-                onClick = {},
+                onClick = { removeFromRecent(text) },
                 modifier = Modifier
                     .wrapContentSize()
                     .align(Alignment.CenterEnd)

@@ -22,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,13 +36,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.hard_mad_2.R
 import com.example.hard_mad_2.data_stub.Data
-import com.example.hard_mad_2.state.ReadingState
+import com.example.hard_mad_2.state.ReadingData
+import kotlinx.coroutines.flow.StateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BookSearchBar() {
-    var textFieldState by remember { mutableStateOf("") }
-    var expanded by rememberSaveable { mutableStateOf(false) }
+fun BookSearchBar(searchState: MutableState<String>, isExpanded: MutableState<Boolean>) {
+    var textFieldState by remember { searchState }
+    var expanded by rememberSaveable { isExpanded }
 
     androidx.compose.material3.SearchBar(
         modifier = if (expanded) {
@@ -148,7 +151,7 @@ fun BookSearchBar() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(Data.searchItems) { item ->
-                BookElement(item, ReadingState())
+                BookElement(item, ReadingData())
             }
             item {
                 Spacer(modifier = Modifier.height(95.dp))

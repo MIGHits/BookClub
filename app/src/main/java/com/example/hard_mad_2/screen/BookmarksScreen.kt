@@ -21,10 +21,10 @@ import com.example.hard_mad_2.components.search_screen.SearchScreenGridItem
 import com.example.hard_mad_2.components.search_screen.SectionHeader
 import com.example.hard_mad_2.data_stub.Data
 import com.example.hard_mad_2.models.SearchBlockType
-import com.example.hard_mad_2.state.ReadingState
+import com.example.hard_mad_2.state.ReadingData
 
 @Composable
-fun BookmarksScreenContent() {
+fun BookmarksScreenContent(toBookDetails: () -> Unit) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -46,7 +46,7 @@ fun BookmarksScreenContent() {
             Row(modifier = Modifier.fillMaxWidth()) {
                 BookElement(
                     Data.readingBook,
-                    ReadingState(isReading = true, chapter = "Пролог", progress = 10)
+                    ReadingData(isReading = true, chapter = "Пролог", progress = 10)
                 )
             }
         }
@@ -59,7 +59,7 @@ fun BookmarksScreenContent() {
             )
         }
         items(Data.searchItems) { item ->
-            BookElement(item, ReadingState())
+            BookElement(item, ReadingData())
         }
         item {
             SectionHeader(
@@ -70,13 +70,12 @@ fun BookmarksScreenContent() {
             )
         }
         items(
-            listOf(
-                "Я все еще жив",
-                "Вы\u0002сокий, широкоплечий, с мертвенно-бледной кожей и редкими\n" +
-                        "белыми волосами"
-            )
+            Data.quotes
         ) { item ->
-            SearchScreenGridItem(text = item, type = SearchBlockType.QUOTES)
+            SearchScreenGridItem(
+                text = item,
+                type = SearchBlockType.QUOTES,
+                onClick = { toBookDetails() })
         }
         item {
             BottomSpacer(100)

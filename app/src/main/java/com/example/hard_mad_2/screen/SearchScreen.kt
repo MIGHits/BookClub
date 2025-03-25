@@ -14,7 +14,13 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -29,18 +35,26 @@ import com.example.hard_mad_2.components.search_screen.SearchScreenGridItem
 import com.example.hard_mad_2.components.search_screen.SectionHeader
 import com.example.hard_mad_2.data_stub.Data
 import com.example.hard_mad_2.models.SearchBlockType
+import com.example.hard_mad_2.state.SearchFormData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun SearchScreenContent() {
+fun SearchScreenContent(searchData: StateFlow<SearchFormData>) {
+    val formState by searchData.collectAsState()
+
     val scrollState = rememberLazyGridState()
+    val searchState = remember { mutableStateOf("") }
+    val expandState = remember { mutableStateOf(false) }
+
     val scrollOffset = scrollState.firstVisibleItemScrollOffset.toFloat()
 
     val searchBarAlpha by animateFloatAsState(
-        targetValue = if (scrollOffset > 0) 0f else 1f,
+        targetValue = if (scrollOffset > 0 && !expandState.value) 0f else 1f,
         animationSpec = tween(durationMillis = 800)
     )
     val searchBarTranslationY by animateFloatAsState(
-        targetValue = if (scrollOffset > 0) -scrollOffset else 0f,
+        targetValue = if (scrollOffset > 0 && !expandState.value) -scrollOffset else 0f,
         animationSpec = tween(durationMillis = 200),
     )
 
@@ -56,7 +70,7 @@ fun SearchScreenContent() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                BottomSpacer(104)
+                BottomSpacer(120)
             }
             item(span = { GridItemSpan(maxLineSpan) }) {
                 SectionHeader(
@@ -66,8 +80,15 @@ fun SearchScreenContent() {
                     Modifier
                 )
             }
-            items(listOf("iOS"), span = { GridItemSpan(maxLineSpan) }) { item ->
-                SearchScreenGridItem(item, SearchBlockType.RECENT_REQUEST)
+            items(formState.recentRequest, span = { GridItemSpan(maxLineSpan) }) { item ->
+                SearchScreenGridItem(
+                    text = item,
+                    type = SearchBlockType.RECENT_REQUEST,
+                    onClick = { value ->
+                        searchState.value = value
+                        expandState.value = true
+                    }
+                )
             }
             item(span = { GridItemSpan(maxLineSpan) }) {
                 SectionHeader(
@@ -78,10 +99,13 @@ fun SearchScreenContent() {
                 )
             }
             items(
-                Data.genres.chunked(GRID_SPAN_COUNT),
+                formState.genres.chunked(GRID_SPAN_COUNT),
                 span = { GridItemSpan(maxLineSpan) }
             ) { rowItems ->
-                Genres(rowItems)
+                Genres(rowItems, onClick = { value ->
+                    searchState.value = value
+                    expandState.value = true
+                })
             }
             item(span = { GridItemSpan(maxLineSpan) }) {
                 SectionHeader(
@@ -92,16 +116,24 @@ fun SearchScreenContent() {
                 )
             }
             items(
-                Data.authors, span = { GridItemSpan(maxLineSpan) }
+                formState.authors, span = { GridItemSpan(maxLineSpan) }
             ) { item ->
-                SearchScreenGridItem(item.name, SearchBlockType.AUTHORS, item.image)
+                SearchScreenGridItem(
+                    text = item.name,
+                    type = SearchBlockType.AUTHORS,
+                    authorImg = item.image,
+                    onClick = { value ->
+                        searchState.value = value
+                        expandState.value = true
+                    }
+                )
             }
             item(span = { GridItemSpan(maxLineSpan) }) {
                 BottomSpacer(100)
             }
         }
 
-        if (searchBarAlpha != 0f) {
+        if (searchBarAlpha != 0f || expandState.value) {
             Box(
                 modifier = Modifier
                     .align(Alignment.TopCenter)
@@ -110,7 +142,7 @@ fun SearchScreenContent() {
                         translationY = searchBarTranslationY
                     }
             ) {
-                BookSearchBar()
+                BookSearchBar(searchState = searchState, isExpanded = expandState)
             }
         }
     }

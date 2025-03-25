@@ -44,7 +44,7 @@ fun BottomNavigationBar(navController: NavController) {
         val currentRoute = backStackEntry?.destination?.route
         listItems.forEach { item ->
             BottomNavigationItem(
-                modifier = Modifier.aspectRatio(1.05f),
+                modifier = Modifier.aspectRatio(1.1f),
                 selected = currentRoute == item.route,
                 onClick = { navController.navigate(item.route) },
                 icon = {
@@ -54,11 +54,8 @@ fun BottomNavigationBar(navController: NavController) {
                     )
                 },
                 selectedContentColor = White,
-                unselectedContentColor = if (item.route == "") {
-                    White
-                } else {
-                    AccentMedium
-                }
+                unselectedContentColor =
+                AccentMedium
             )
         }
     }

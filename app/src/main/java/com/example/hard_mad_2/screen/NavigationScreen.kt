@@ -26,26 +26,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.hard_mad_2.R
-import com.example.hard_mad_2.common.Constant.HEADLINE_LARGE_SIZE
 import com.example.hard_mad_2.common.Constant.LARGE_BUTTON
 import com.example.hard_mad_2.common.Constant.SMALL_BUTTON
 import com.example.hard_mad_2.common.Constant.SMALL_HEIGHT
 import com.example.hard_mad_2.common.Constant.SMALL_WIDTH
-import com.example.hard_mad_2.common.Constant.TITLE_LARGE_SIZE
 import com.example.hard_mad_2.components.BottomNavigationBar
+import com.example.hard_mad_2.data_stub.Data
 import com.example.hard_mad_2.screen.routes.BookDetails
 import com.example.hard_mad_2.screen.routes.BookmarksScreen
 import com.example.hard_mad_2.screen.routes.ChapterScreen
 import com.example.hard_mad_2.screen.routes.LibraryScreen
 import com.example.hard_mad_2.screen.routes.SearchScreen
 import com.example.hard_mad_2.screen.routes.SignInScreen
+import com.example.hard_mad_2.state.SearchFormData
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -80,24 +80,46 @@ fun NavigationScreen(
 
         NavHost(
             navController = navController,
-            startDestination = ChapterScreen.toString(),
+            startDestination = SignInScreen.toString(),
             modifier = modifier.fillMaxSize()
         ) {
             composable(SignInScreen.toString()) {
                 bottomBarVisible = false
-                SignInScreenContent()
+                SignInScreenContent(onSignIn = {
+                    navController.navigate(LibraryScreen.toString()) {
+                        popUpTo(SignInScreen.toString()) {
+                            inclusive = true
+                        }
+                    }
+                })
             }
             composable(LibraryScreen.toString()) {
                 bottomBarVisible = true
-                LibraryScreenContent()
+                LibraryScreenContent(toBookDetails = {
+                    navController.navigate(BookDetails.toString()) {
+                        launchSingleTop
+                    }
+                })
             }
             composable(SearchScreen.toString()) {
                 bottomBarVisible = true
-                SearchScreenContent()
+                SearchScreenContent(
+                    searchData = MutableStateFlow(
+                        SearchFormData(
+                            authors = Data.authors,
+                            genres = Data.genres,
+                            recentRequest = Data.recentRequest
+                        )
+                    )
+                )
             }
             composable(BookmarksScreen.toString()) {
                 bottomBarVisible = true
-                BookmarksScreenContent()
+                BookmarksScreenContent(toBookDetails = {
+                    navController.navigate(BookDetails.toString()) {
+                        launchSingleTop
+                    }
+                })
             }
             composable(BookDetails.toString()) {
                 bottomBarVisible = false
