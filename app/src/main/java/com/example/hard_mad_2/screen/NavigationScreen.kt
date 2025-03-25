@@ -126,8 +126,11 @@ fun NavigationScreen(
                         }
                     },
                     currentBook = Data.readingBook,
-                    currentBookData = Data.currentBookData
-                )
+                    currentBookData = Data.currentBookData, toReadScreen = {
+                        navController.navigate(ChapterScreen.toString()) {
+                            launchSingleTop
+                        }
+                    })
             }
             composable(BookDetails.toString()) {
                 bottomBarVisible = false

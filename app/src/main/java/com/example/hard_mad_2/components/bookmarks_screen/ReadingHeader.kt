@@ -19,7 +19,7 @@ import com.example.hard_mad_2.R
 import com.example.hard_mad_2.components.search_screen.SectionHeader
 
 @Composable
-fun ReadingHeader() {
+fun ReadingHeader(toReadScreen: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,7 +36,7 @@ fun ReadingHeader() {
             Modifier.weight(0.316f)
         )
         FloatingActionButton(
-            onClick = {}, modifier = Modifier
+            onClick = { toReadScreen() }, modifier = Modifier
                 .weight(0.04f)
                 .aspectRatio(1f),
             shape = CircleShape,

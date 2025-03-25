@@ -6,7 +6,7 @@ object Constant {
     const val SMALL_HEIGHT = 740
 
     const val SMALL_BUTTON = 68
-    const val LARGE_BUTTON = 80
+    const val LARGE_BUTTON = 82
     const val HEADLINE_LARGE_SIZE = 32
     const val TITLE_LARGE_SIZE = 68
 

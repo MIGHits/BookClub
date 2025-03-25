@@ -27,6 +27,7 @@ import com.example.hard_mad_2.state.ReadingData
 @Composable
 fun BookmarksScreenContent(
     toBookDetails: () -> Unit,
+    toReadScreen: () -> Unit,
     currentBook: SearchItem,
     currentBookData: ReadingData
 ) {
@@ -45,7 +46,7 @@ fun BookmarksScreenContent(
             )
         }
         item {
-            ReadingHeader()
+            ReadingHeader(toReadScreen)
         }
         item {
             Row(modifier = Modifier.fillMaxWidth()) {
