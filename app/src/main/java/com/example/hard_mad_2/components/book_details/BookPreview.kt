@@ -20,17 +20,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.hard_mad_2.R
-import com.example.hard_mad_2.data_stub.Data
 
 @Composable
-fun BookPreview() {
+fun BookPreview(backAction: () -> Unit, bookPreview: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(1.084f)
     ) {
         AsyncImage(
-            model = Data.bookDetailsPreview,
+            model = bookPreview,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -52,7 +51,7 @@ fun BookPreview() {
                 )
         )
         FloatingActionButton(
-            onClick = {},
+            onClick = { backAction() },
             backgroundColor = MaterialTheme.colorScheme.primary,
             modifier =
             Modifier

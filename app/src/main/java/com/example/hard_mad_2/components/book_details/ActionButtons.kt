@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.example.hard_mad_2.R
 
 @Composable
-fun ActionButtons() {
+fun ActionButtons(readAction: () -> Unit, favoriteAction: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

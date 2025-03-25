@@ -21,10 +21,15 @@ import com.example.hard_mad_2.components.search_screen.SearchScreenGridItem
 import com.example.hard_mad_2.components.search_screen.SectionHeader
 import com.example.hard_mad_2.data_stub.Data
 import com.example.hard_mad_2.models.SearchBlockType
+import com.example.hard_mad_2.models.SearchItem
 import com.example.hard_mad_2.state.ReadingData
 
 @Composable
-fun BookmarksScreenContent(toBookDetails: () -> Unit) {
+fun BookmarksScreenContent(
+    toBookDetails: () -> Unit,
+    currentBook: SearchItem,
+    currentBookData: ReadingData
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -45,8 +50,9 @@ fun BookmarksScreenContent(toBookDetails: () -> Unit) {
         item {
             Row(modifier = Modifier.fillMaxWidth()) {
                 BookElement(
-                    Data.readingBook,
-                    ReadingData(isReading = true, chapter = "Пролог", progress = 10)
+                    currentBook,
+                    currentBookData,
+                    toBookDetails = toBookDetails
                 )
             }
         }
@@ -59,7 +65,7 @@ fun BookmarksScreenContent(toBookDetails: () -> Unit) {
             )
         }
         items(Data.searchItems) { item ->
-            BookElement(item, ReadingData())
+            BookElement(item, ReadingData(), toBookDetails)
         }
         item {
             SectionHeader(

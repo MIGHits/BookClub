@@ -18,17 +18,25 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.hard_mad_2.R
+import com.example.hard_mad_2.common.Constant.LARGE_BUTTON
+import com.example.hard_mad_2.common.Constant.SMALL_BUTTON
+import com.example.hard_mad_2.common.Constant.SMALL_HEIGHT
+import com.example.hard_mad_2.common.Constant.SMALL_WIDTH
 
 @Composable
 fun SettingBottomSheet(
     modifier: Modifier = Modifier,
     selectedSize: Int,
     selectedHeight: Int,
-    hideSheet: () -> Unit
+    hideSheet: () -> Unit,
+    onSelectSize: (Int) -> Unit,
+    onSelectHeight: (Int) -> Unit
 ) {
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -54,10 +62,11 @@ fun SettingBottomSheet(
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val sizeSliderIndex = rememberSaveable { mutableFloatStateOf(0f) }
+            val sizeSliderIndex = rememberSaveable { mutableFloatStateOf(selectedSize.toFloat()) }
             val interactionSource = remember { MutableInteractionSource() }
 
-            val lineHeightSliderIndex = rememberSaveable { mutableFloatStateOf(0f) }
+            val lineHeightSliderIndex =
+                rememberSaveable { mutableFloatStateOf(selectedHeight.toFloat()) }
             val lineHeightInteractionSource = remember { MutableInteractionSource() }
 
             BottomSheetHeader(onCloseAction = hideSheet)
@@ -66,14 +75,19 @@ fun SettingBottomSheet(
                 sliderIndex = sizeSliderIndex,
                 onValueChange = { value -> sizeSliderIndex.floatValue = value },
                 interactionSource = interactionSource,
-                headerText = stringResource(R.string.font_size_header)
+                headerText = stringResource(R.string.font_size_header),
+                range = 10f..20f,
+                onSelectSize
             )
             SettingsSlider(
-                modifier = Modifier.padding(top = 27.dp),
+                modifier = Modifier
+                    .padding(top = 27.dp),
                 sliderIndex = lineHeightSliderIndex,
                 onValueChange = { value -> lineHeightSliderIndex.floatValue = value },
                 interactionSource = lineHeightInteractionSource,
-                headerText = stringResource(R.string.line_height_size)
+                headerText = stringResource(R.string.line_height_size),
+                range = 20f..30f,
+                onSelectHeight
             )
         }
     }

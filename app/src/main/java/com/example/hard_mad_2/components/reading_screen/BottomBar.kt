@@ -24,6 +24,8 @@ fun BottomBar(
     bookMenuAction: () -> Unit,
     showBottomSheet: () -> Unit,
     play: () -> Unit,
+    nextChapter: () -> Unit,
+    previousChapter: () -> Unit,
     isPlaying: Boolean
 ) {
     Column(modifier = Modifier.background(color = MaterialTheme.colorScheme.primary)) {
@@ -37,7 +39,7 @@ fun BottomBar(
                 modifier = Modifier.padding(start = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { previousChapter() }) {
                     Icon(
                         painter = painterResource(R.drawable.previous_icon),
                         contentDescription = null,
@@ -53,7 +55,7 @@ fun BottomBar(
                         tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
-                IconButton(onClick = {}) {
+                IconButton(onClick = { nextChapter() }) {
                     Icon(
                         painter = painterResource(R.drawable.next_icon),
                         contentDescription = null,

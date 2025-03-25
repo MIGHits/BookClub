@@ -24,6 +24,9 @@ import com.example.hard_mad_2.components.book_details.BookShortInfo
 import com.example.hard_mad_2.components.bookmarks_screen.BookProgressBar
 import com.example.hard_mad_2.components.search_screen.SectionHeader
 import com.example.hard_mad_2.data_stub.Data
+import com.example.hard_mad_2.models.BookChapter
+import com.example.hard_mad_2.models.SearchItem
+import com.example.hard_mad_2.state.ReadingData
 import kotlinx.coroutines.launch
 import me.onebone.toolbar.CollapsingToolbarScaffold
 import me.onebone.toolbar.ExperimentalToolbarApi
@@ -32,9 +35,14 @@ import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 
 @OptIn(ExperimentalToolbarApi::class)
-@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
-fun BookDetailsContent() {
+fun BookDetailsContent(
+    backAction: () -> Unit,
+    bookData: ReadingData,
+    book: SearchItem,
+    readAction: (String, Int, String, List<BookChapter>) -> Unit,
+    favoriteAction: () -> Unit
+) {
     val scrollState = rememberLazyListState()
     val state = rememberCollapsingToolbarScaffoldState()
     val coroutineScope = rememberCoroutineScope()
@@ -48,8 +56,8 @@ fun BookDetailsContent() {
             Column(
                 modifier = Modifier.parallax(0.5f)
             ) {
-                BookPreview()
-                ActionButtons()
+                BookPreview(backAction, Data.bookDetailsPreview)
+                ActionButtons(readAction = {}, favoriteAction = { TODO() })
             }
         },
     ) {
@@ -70,7 +78,7 @@ fun BookDetailsContent() {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             item {
-                BookShortInfo()
+                BookShortInfo(book)
             }
 
             item {
@@ -82,7 +90,9 @@ fun BookDetailsContent() {
                 )
             }
             item {
-                BookProgressBar(0.5f)
+                if (bookData.isReading) {
+                    BookProgressBar(bookData.progress / 100f)
+                }
             }
             item {
                 SectionHeader(

@@ -19,18 +19,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
-import com.example.hard_mad_2.data_stub.Data
 
 @Composable
 fun BookContentMenu(
     modifier: Modifier = Modifier,
     current: Int,
-    hideMenu: () -> Unit
+    hideMenu: () -> Unit,
+    bookContent: List<String>
 ) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .padding(bottom = 24.dp)
+            .padding(bottom = 24.dp, top = 32.dp)
             .clickable(
                 onClick = { hideMenu() },
                 indication = null,
@@ -58,7 +58,7 @@ fun BookContentMenu(
                     .fillMaxWidth()
                     .weight(1f)
             ) {
-                itemsIndexed(Data.bookContent) { index, stage ->
+                itemsIndexed(bookContent) { index, stage ->
                     BookContentItem(name = stage, index = index, currentIndex = current)
                 }
             }

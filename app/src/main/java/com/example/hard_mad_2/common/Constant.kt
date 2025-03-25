@@ -11,4 +11,5 @@ object Constant {
     const val TITLE_LARGE_SIZE = 68
 
     const val GRID_SPAN_COUNT = 2
+    const val BASE_SPEED = 30L
 }

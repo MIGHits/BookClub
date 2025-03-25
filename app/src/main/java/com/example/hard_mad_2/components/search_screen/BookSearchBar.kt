@@ -16,6 +16,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults.InputField
 import androidx.compose.material3.SearchBarDefaults.colors
 import androidx.compose.material3.Text
@@ -41,11 +42,15 @@ import kotlinx.coroutines.flow.StateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BookSearchBar(searchState: MutableState<String>, isExpanded: MutableState<Boolean>) {
+fun BookSearchBar(
+    searchState: MutableState<String>,
+    isExpanded: MutableState<Boolean>,
+    toBookDetails: () -> Unit
+) {
     var textFieldState by remember { searchState }
     var expanded by rememberSaveable { isExpanded }
 
-    androidx.compose.material3.SearchBar(
+    SearchBar(
         modifier = if (expanded) {
             Modifier
                 .fillMaxWidth()
@@ -151,7 +156,7 @@ fun BookSearchBar(searchState: MutableState<String>, isExpanded: MutableState<Bo
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(Data.searchItems) { item ->
-                BookElement(item, ReadingData())
+                BookElement(item, ReadingData(), toBookDetails)
             }
             item {
                 Spacer(modifier = Modifier.height(95.dp))

@@ -1,6 +1,5 @@
 package com.example.hard_mad_2.screen
 
-//noinspection UsingMaterialAndMaterial3Libraries
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -110,24 +109,48 @@ fun NavigationScreen(
                             genres = Data.genres,
                             recentRequest = Data.recentRequest
                         )
-                    )
+                    ),
+                    toBookDetails = {
+                        navController.navigate(BookDetails.toString()) {
+                            launchSingleTop
+                        }
+                    }
                 )
             }
             composable(BookmarksScreen.toString()) {
                 bottomBarVisible = true
-                BookmarksScreenContent(toBookDetails = {
-                    navController.navigate(BookDetails.toString()) {
-                        launchSingleTop
-                    }
-                })
+                BookmarksScreenContent(
+                    toBookDetails = {
+                        navController.navigate(BookDetails.toString()) {
+                            launchSingleTop
+                        }
+                    },
+                    currentBook = Data.readingBook,
+                    currentBookData = Data.currentBookData
+                )
             }
             composable(BookDetails.toString()) {
                 bottomBarVisible = false
-                BookDetailsContent()
+                BookDetailsContent(
+                    backAction = { navController.navigateUp() },
+                    bookData = Data.currentBookData,
+                    book = Data.readingBook,
+                    readAction = { name, currentChapter, content, chapters ->
+                        navController.navigate(ChapterScreen.toString()) {
+                            launchSingleTop
+                        }
+                    },
+                    favoriteAction = {}
+                )
             }
             composable(ChapterScreen.toString()) {
                 bottomBarVisible = false
-                ChapterScreenContent()
+                ChapterScreenContent(
+                    backAction = { navController.navigateUp() },
+                    bookName = Data.readingBook.name,
+                    currentChapter = 0,
+                    chapterContent = Data.chapters
+                )
             }
         }
         if (bottomBarVisible) {
@@ -144,7 +167,11 @@ fun NavigationScreen(
                 )
             }
             FloatingActionButton(
-                onClick = {},
+                onClick = {
+                    navController.navigate(ChapterScreen.toString()) {
+                        launchSingleTop
+                    }
+                },
                 modifier = Modifier
                     .padding(bottom = 34.dp)
                     .align(Alignment.BottomCenter)

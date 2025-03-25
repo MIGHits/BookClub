@@ -1,9 +1,7 @@
 package com.example.hard_mad_2.adapter
 
-import android.graphics.RectF
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.util.lerp
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide

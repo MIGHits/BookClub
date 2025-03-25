@@ -1,5 +1,6 @@
 package com.example.hard_mad_2.components.search_screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -29,11 +30,12 @@ import com.example.hard_mad_2.state.ReadingData
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun BookElement(searchBook: SearchItem, readingData: ReadingData) {
+fun BookElement(searchBook: SearchItem, readingData: ReadingData, toBookDetails: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(),
+            .fillMaxHeight()
+            .clickable { toBookDetails() },
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(

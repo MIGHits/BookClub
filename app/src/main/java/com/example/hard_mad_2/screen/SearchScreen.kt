@@ -40,7 +40,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun SearchScreenContent(searchData: StateFlow<SearchFormData>) {
+fun SearchScreenContent(searchData: StateFlow<SearchFormData>, toBookDetails: () -> Unit) {
     val formState by searchData.collectAsState()
 
     val scrollState = rememberLazyGridState()
@@ -142,7 +142,11 @@ fun SearchScreenContent(searchData: StateFlow<SearchFormData>) {
                         translationY = searchBarTranslationY
                     }
             ) {
-                BookSearchBar(searchState = searchState, isExpanded = expandState)
+                BookSearchBar(
+                    searchState = searchState,
+                    isExpanded = expandState,
+                    toBookDetails = toBookDetails
+                )
             }
         }
     }
