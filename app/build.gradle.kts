@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("plugin.serialization") version "2.1.10"
+    id("kotlin-parcelize")
 }
 
 android {
@@ -37,10 +38,14 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 }
 
 dependencies {
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.toolbar.compose)
+    implementation(libs.glide)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.coil.compose)
@@ -52,8 +57,13 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.compose.material.material)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material3.adaptive.navigation.suite)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

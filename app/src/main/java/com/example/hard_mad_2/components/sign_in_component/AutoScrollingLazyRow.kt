@@ -1,4 +1,4 @@
-package com.example.hard_mad_2.components
+package com.example.hard_mad_2.components.sign_in_component
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.LinearEasing
@@ -20,10 +20,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.hard_mad_2.common.Constant.SCROLL_DX
 import kotlinx.coroutines.launch
 import java.util.UUID
 
-private const val SCROLL_DX = 24f
 
 private class AutoScrollItem<T>(
     val id: String = UUID.randomUUID().toString(),
