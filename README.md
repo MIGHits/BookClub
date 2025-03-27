@@ -13,6 +13,7 @@
 - Coil
 - Glide
 - Onebone:toolbar-compose
+- Accompanist
 
 ## 📱 Screenshots 
 ### Sign In Screen| Library Screen | Search Screen | Search Screen Result
